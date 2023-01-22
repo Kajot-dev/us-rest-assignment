@@ -1,0 +1,75 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    background: rgba(var(--card-rgb), 0.2);
+    background-clip: padding-box;
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(var(--card-border-rgb), 0.4);
+    transition: background 200ms, border 200ms;
+  }
+  
+.form .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.1rem;
+}
+
+.form form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+}
+
+.form input, .form textarea {
+    margin-bottom: 1rem;
+}
+
+.form input[type="text"] {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(var(--card-border-rgb), 0.4);
+    background: rgba(var(--card-rgb), 0.4);
+    transition: background 200ms, border 200ms;
+}
+
+.form textarea {
+    display: block;
+    width: 100%;
+    min-height: 150px;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(var(--card-border-rgb), 0.4);
+    background: rgba(var(--card-rgb), 0.4);
+    transition: background 200ms, border 200ms;
+    resize: none;
+}
+
+.form button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(var(--card-border-rgb), 0.4);
+    background: rgba(var(--card-rgb), 0.4);
+    transition: background 200ms, border 200ms;
+}
+
+.form button[type="submit"]:hover {
+    background: rgba(var(--card-rgb), 0.6);
+    border: 1px solid rgba(var(--card-border-rgb), 0.6);
+    cursor: pointer;
+}
+
+
+  

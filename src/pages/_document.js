@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import Back from '@/components/Back'
 
 export default function Document() {
   return (
