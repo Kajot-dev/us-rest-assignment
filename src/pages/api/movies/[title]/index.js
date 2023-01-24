@@ -6,6 +6,12 @@ export default function handler(req, res) {
     return;
   }
   let title = req.query.title;
+
+  if (!req.accepts("application/json")) {
+    res.status(406).json({ error: "Not acceptable" });
+    return;
+  }
+  
   let movie = MovieDB.getMovie(title);
   if (movie) {
     res.status(200).json(movie.toJSON());
