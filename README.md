@@ -1,38 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# REST Sentiment analysis
 
-## Getting Started
+Aplikacja napisana za pomocą frameworka `next.js` z użyciem `nodejs`
 
-First, run the development server:
+Kod jest dostępny na repozytorium Github: https://github.com/Kajot-dev/us-rest-assignment
 
+Kod odpowiadający za REST-owe API znajduje się w podfolderze `src/pages/api`
+
+Backendowy kod odpowiadający z bazę danych oraz reprezentację (klasę `Movie`) filmu znajduje się w `src/utils` Tam też znajduje się domyślna lista filmów oraz słów pozytywnych i negatywnych.
+
+Reszta kodu w `src/pages`, `src/components` oraz `src/styles` odpowiada za klienta do aplikacji.
+
+Aplikacja pozawala na;
+- Pobieranie informacji na temat filmów
+- Dodawanie recenzji
+  - Ocenianie recenzji na bazie listy pozytywnych i negatywnych słów
+  - Obsługiwane są słowa po polsku i po angielsku
+- Dodawanie nowych tytułów
+
+
+API REST-owe posiada 3 ścieżki
+
+1. `/api/movies` - POST -> pozwala na dodawnie nowych filmów. Akceptuje JSON.
+2. `/api/movies/[title]` - GET -> Zwraca informacje na temat filmu jako JSON
+3. `/api/movies/[title]/review` - POST -> Pozwala na dodanie recenzji. Zwraca zwykły text oznajmiający, czy recencja była `POSITIVE`, `NEGATIVE`, czy `NEUTRAL/UNKNOWN`
+
+# Jak uruchomić aplikację
+
+Istnieją 3 sposoby na uruchomienie aplikacji
+
+## 1. Na stronie internetowej
+
+Aplikacja jest hostowana na  https://us-rest-assignment-kajot-dev.vercel.app/ 
+
+**UWAGA:** Vercel jest hostingiem typu `serverless`, co oznacza, że baza danych zostanie zresetowana po około minucie nieaktywności
+
+## 2. Obraz dockerowy jest dostępny jako `kajotdev/rest:latest`
+
+Aby pobrać obraz uruchom
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+docker pull kajotdev/rest
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Aby włączyć serwer uruchom
+```bash
+docker run -p 3000:3000 kajotdev/rest:latest
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Aplikacja jest dostępna na http://localhost:3000
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 3. Kompilacja ze źródeł
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+`nodejs` i `npm` są wymagane. Projekt został wykonany za pomocą frameworka `next.js` z nodejs w wersji `18`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Żeby zainstalować lokalne zależności, uruchom:
+```bash
+npm install
+```
 
-## Learn More
+Aby skompilować, uruchom:
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Aby uruchomić serwer, uruchom:
+```bash
+npm run start
+```
+App is available at http://localhost:3000
