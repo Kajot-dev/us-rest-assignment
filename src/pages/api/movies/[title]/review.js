@@ -6,7 +6,8 @@ export default function handler(req, res) {
     return;
   }
 
-  if (!req.accepts("text/plain")) {
+  let acceptHeader = req.headers["accept"];
+  if (acceptHeader && acceptHeader.trim() !== "" && ["text/plain", "*/*"].every((v) => !acceptHeader.includes(v))) {
     res.status(406).end("Not acceptable");
     return;
   }

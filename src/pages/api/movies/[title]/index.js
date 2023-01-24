@@ -7,11 +7,12 @@ export default function handler(req, res) {
   }
   let title = req.query.title;
 
-  if (!req.accepts("application/json")) {
+  const acceptHeader = req.headers["accept"];
+  if (acceptHeader && acceptHeader.trim() !== "" && ["application/json", "*/*"].every((v) => !acceptHeader.includes(v))) {
     res.status(406).json({ error: "Not acceptable" });
     return;
   }
-  
+
   let movie = MovieDB.getMovie(title);
   if (movie) {
     res.status(200).json(movie.toJSON());
